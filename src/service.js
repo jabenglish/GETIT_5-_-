@@ -5,7 +5,7 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 class API {
   async getAllPosts() {
     try {
-      return await axios.get(`http://172.30.1.58:8080/getAll`);
+      return await axios.get(`${BASE_URL}/getAll`);
     } catch (err) {
       console.error(err);
       throw err;
@@ -24,7 +24,7 @@ class API {
   async createPost(data) {
     try {
       console.log('BASE_URL:', BASE_URL); // 디버깅을 위해 추가
-      const response = await axios.post(`http://172.30.1.58:8080/postCreate`, data);
+      const response = await axios.post(`${BASE_URL}/postCreate`, data);
       console.log('Post created successfully:', response.data);
       return response.data;
     } catch (err) {
@@ -47,7 +47,7 @@ class API {
 
   async createImage(data) {
     try {
-      const response = await axios.post(`http://172.30.1.58:8080/createImage`, data);
+      const response = await axios.post(`${BASE_URL}/createImage`, data);
       console.log('이미지 생성 성공', response.data);
       return response.data;
     } catch (err) {
@@ -67,7 +67,7 @@ class API {
 
   async deletePost(postId) {
     try {
-      return await axios.post(`http://172.30.1.58:8080/postDelete`, postId); // DELETE 요청으로 수정
+      return await axios.post(`{${BASE_URL}}/postDelete`, postId); // DELETE 요청으로 수정
     } catch (err) {
       console.error(err);
       throw err;
